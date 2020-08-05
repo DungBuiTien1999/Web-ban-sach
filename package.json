@@ -1,0 +1,26 @@
+{
+  "name": "web-ban-sach",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DungBuiTien1999/Web-ban-sach.git"
+  },
+  "author": "1712349_1712365",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DungBuiTien1999/Web-ban-sach/issues"
+  },
+  "homepage": "https://github.com/DungBuiTien1999/Web-ban-sach#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  }
+}
