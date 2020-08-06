@@ -12,7 +12,11 @@ app.set('view engine', 'hbs');
 app.get('/', function (req, res) {
   res.render('home');
 });
- 
+
+app.get('/login', (req, res)=>{
+  res.render("vwAccount/login");
+})
+
 app.listen(3000, () => {
     console.log('Web Server is runing at http://localhost:3000');
 });
