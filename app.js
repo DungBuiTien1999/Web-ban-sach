@@ -14,7 +14,7 @@ const app = express();
 //   //     secure: true
 //   // }
 // }))
-app.use(express.static(path.join(__dirname, '/Contents')));
+// app.use(express.static(path.join(__dirname, '/Contents')));
 app.engine('hbs', exphbs({
     defaultLayout: 'main.hbs',
     layoutsDir: 'views/_layouts',
@@ -22,7 +22,7 @@ app.engine('hbs', exphbs({
       section: express_handlebars_sections()
     }
 }));
-// app.use(express.static("contents"));
+app.use(express.static("contents"));
 
 app.set('view engine', 'hbs');
 
@@ -33,6 +33,7 @@ const FONTAWESOME470='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/
 const BOOTSTRAP431='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">';
 const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
 const LOGINCSS=' <link rel="stylesheet" href="../css/login.css">';
+const MAINCSS = '<link rel="stylesheet" href="../css/main.css">'
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
@@ -50,6 +51,9 @@ app.get('/', function (req, res) {
   res.render('home', {
     bootstrap400:BOOTSTRAP400,
      bootstrap431:BOOTSTRAP431,
+     fontawesome470:FONTAWESOME470,
+     bootstrap431: BOOTSTRAP431,
+     maincss: MAINCSS,
     title:"Book Store"});
 });
 
