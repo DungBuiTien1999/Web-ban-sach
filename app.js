@@ -33,11 +33,13 @@ const FONTAWESOME470='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/
 const BOOTSTRAP431='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">';
 const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
 const LOGINCSS=' <link rel="stylesheet" href="../css/login.css">';
-const MAINCSS = '<link rel="stylesheet" href="../css/main.css">'
+const MAINCSS = '<link rel="stylesheet" href="../css/main.css">';
+const HOMECSS ='<link rel="stylesheet" href="../css/home.css">'
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
 const LOGINJS=' <script type="text/javascript" src="../js/login.js"></script>';
+const HOMEJS = ' <script type="text/javascript" src="../js/home.js"></script>';
 const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
 const BOOTSTRAP400JS=' <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
 const POPPER1147JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>';
@@ -54,6 +56,10 @@ app.get('/', function (req, res) {
      fontawesome470:FONTAWESOME470,
      bootstrap431: BOOTSTRAP431,
      maincss: MAINCSS,
+     homecss: HOMECSS,
+     homejs: HOMEJS,
+     hasNavbar: true,
+     hasFooter: true,
     title:"Book Store"});
 });
 
@@ -63,7 +69,9 @@ app.get('/signup', (req, res)=>{
     signupCss:SIGNUPCSS,
      fontawesome5121:FONTAWESOME5121,
       fontawesome470:FONTAWESOME470,
-      signupJs:SIGNUPJS});
+      signupJs:SIGNUPJS,
+      hasNavbar:false,
+    });
 });
 
 app.get('/login', (req, res)=>{
@@ -73,7 +81,9 @@ app.get('/login', (req, res)=>{
     loginCss:LOGINCSS,
     fontawesome470:FONTAWESOME470,
     fontawesome5121:FONTAWESOME5121,
-    loginJs:LOGINJS});
+    loginJs:LOGINJS,
+    hasNavbar:false,
+  });
 });
 
 app.listen(3000, () => {
