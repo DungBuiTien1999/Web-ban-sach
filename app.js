@@ -14,7 +14,7 @@ const app = express();
 //   //     secure: true
 //   // }
 // }))
-app.use(express.static(path.join(__dirname, '/Contents')));
+app.use(express.static(path.join(__dirname, 'contents')));
 app.engine('hbs', exphbs({
     defaultLayout: 'main.hbs',
     layoutsDir: 'views/_layouts',
@@ -32,7 +32,8 @@ const BOOTSTRAP400='<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com
 const FONTAWESOME470='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />';
 const BOOTSTRAP431='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">';
 const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
-const LOGINCSS=' <link rel="stylesheet" href="../css/login.css">';
+const LOGINCSS='<link rel="stylesheet" href="../css/login.css">';
+const STYLE='<link rel="stylesheet" href="../css/style.css">';
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
@@ -49,8 +50,11 @@ const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey
 app.get('/', function (req, res) {
   res.render('home', {
     bootstrap400:BOOTSTRAP400,
-     bootstrap431:BOOTSTRAP431,
-    title:"Book Store"});
+    bootstrap431:BOOTSTRAP431,
+    style:STYLE,
+    title:"Book Store",
+    hasNavbar:true,
+  });
 });
 
 app.get('/signup', (req, res)=>{
@@ -59,7 +63,9 @@ app.get('/signup', (req, res)=>{
     signupCss:SIGNUPCSS,
      fontawesome5121:FONTAWESOME5121,
       fontawesome470:FONTAWESOME470,
-      signupJs:SIGNUPJS});
+      signupJs:SIGNUPJS,
+      hasNavbar:false,
+    });
 });
 
 app.get('/login', (req, res)=>{
@@ -69,7 +75,9 @@ app.get('/login', (req, res)=>{
     loginCss:LOGINCSS,
     fontawesome470:FONTAWESOME470,
     fontawesome5121:FONTAWESOME5121,
-    loginJs:LOGINJS});
+    loginJs:LOGINJS,
+    hasNavbar:false,
+  });
 });
 
 app.listen(3000, () => {
