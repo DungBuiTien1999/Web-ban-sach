@@ -1,0 +1,36 @@
+<div class="container-center">
+    <!--enctype="multipart/form-data" băm cái file ra nhiều phần rồi gửi-->
+    <form action="" method="POST" enctype="multipart/form-data">
+        <label>Thể loại</label>
+        <br>
+        <select name="selectCategory">
+            {{#each category}}
+            <option value="{{this}}">
+                {{this}}
+            </option>
+            {{/each}}
+        </select>
+        <br><br>
+        <label>Name</label>
+        <input type="text" name="txtBookName">
+        <br><br>
+        <label>Tác giả</label>
+        <input type="text" name="txtAuthor">
+        <br><br>
+        <lable>Price</lable>
+        <input type="text" name="txtBookPrice">
+        <br><br>
+        <lable>Description</lable>
+        <textarea type="text" name="txtDescription" cols="50" rows="10"></textarea>
+        <br><br>
+        <label>Image</label>
+        <input type="file" name="txtChooseImage" id="chooseImage" hidden="true">
+        <br>
+        <label class="choose-image-lb" for="chooseImage">
+            <i class="fa fa-upload fa-1x"></i>
+            Choose Image
+        </label>
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+</div>

@@ -34,6 +34,7 @@ const BOOTSTRAP431='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.
 const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
 const LOGINCSS='<link rel="stylesheet" href="../css/login.css">';
 const STYLE='<link rel="stylesheet" href="../css/style.css">';
+const UPLOADBOOK='<link rel="stylesheet" href="../css/uploadBook.css">';
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
@@ -46,6 +47,7 @@ const SWEETALERT2JS=' <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"><
 const PROMISEPOLYFILLJS='<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>';
 const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>';
 const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
+const UPLOADBOOKJS='<script type="text/javascript" src="../js/uploadBook.js"></script>';
 
 app.get('/', function (req, res) {
   res.render('home', {
@@ -82,4 +84,14 @@ app.get('/login', (req, res)=>{
 
 app.listen(3000, () => {
     console.log('Web Server is runing at http://localhost:3000');
+});
+
+app.get('/uploadBook',(req,res)=>{
+  res.render("uploadBook",{
+    category:["truyện tranh", "trinh thám"],
+    uploadBook:UPLOADBOOK,
+    fontawesome470:FONTAWESOME470,
+    fontawesome5121:FONTAWESOME5121,
+    uploadBookJs:UPLOADBOOKJS,
+  });
 });
