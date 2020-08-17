@@ -14,7 +14,7 @@ const app = express();
 //   //     secure: true
 //   // }
 // }))
-app.use(express.static(path.join(__dirname, 'contents')));
+// app.use(express.static(path.join(__dirname, '/Contents')));
 app.engine('hbs', exphbs({
     defaultLayout: 'main.hbs',
     layoutsDir: 'views/_layouts',
@@ -22,7 +22,7 @@ app.engine('hbs', exphbs({
       section: express_handlebars_sections()
     }
 }));
-// app.use(express.static("contents"));
+app.use(express.static("contents"));
 
 app.set('view engine', 'hbs');
 
@@ -32,13 +32,15 @@ const BOOTSTRAP400='<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com
 const FONTAWESOME470='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />';
 const BOOTSTRAP431='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">';
 const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
-const LOGINCSS='<link rel="stylesheet" href="../css/login.css">';
-const STYLE='<link rel="stylesheet" href="../css/style.css">';
-const UPLOADBOOK='<link rel="stylesheet" href="../css/uploadBook.css">';
+const LOGINCSS=' <link rel="stylesheet" href="../css/login.css">';
+const MAINCSS = '<link rel="stylesheet" href="../css/main.css">';
+const HOMECSS ='<link rel="stylesheet" href="../css/home.css">';
+const UPLOADBOOKCSS='<link rel="stylesheet" href="../css/uploadBook.css">';
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
 const LOGINJS=' <script type="text/javascript" src="../js/login.js"></script>';
+const HOMEJS = ' <script type="text/javascript" src="../js/home.js"></script>';
 const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
 const BOOTSTRAP400JS=' <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
 const POPPER1147JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>';
@@ -52,11 +54,15 @@ const UPLOADBOOKJS='<script type="text/javascript" src="../js/uploadBook.js"></s
 app.get('/', function (req, res) {
   res.render('home', {
     bootstrap400:BOOTSTRAP400,
-    bootstrap431:BOOTSTRAP431,
-    style:STYLE,
-    title:"Book Store",
-    hasNavbar:true,
-  });
+     bootstrap431:BOOTSTRAP431,
+     fontawesome470:FONTAWESOME470,
+     bootstrap431: BOOTSTRAP431,
+     maincss: MAINCSS,
+     homecss: HOMECSS,
+     homejs: HOMEJS,
+     hasNavbar: true,
+     hasFooter: true,
+    title:"Book Store"});
 });
 
 app.get('/signup', (req, res)=>{
@@ -89,7 +95,7 @@ app.listen(3000, () => {
 app.get('/uploadBook',(req,res)=>{
   res.render("uploadBook",{
     category:["truyện tranh", "trinh thám"],
-    uploadBook:UPLOADBOOK,
+    uploadBookCss:UPLOADBOOKCSS,
     fontawesome470:FONTAWESOME470,
     fontawesome5121:FONTAWESOME5121,
     uploadBookJs:UPLOADBOOKJS,

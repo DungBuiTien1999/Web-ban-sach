@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{{title}}</title>
     {{!-- Phần khai báo css --}}
     {{{signupCss}}}
@@ -12,9 +12,12 @@
     {{{bootstrap400}}}
     {{{bootstrap431}}}
     {{{loginCss}}}
+    {{{maincss}}}
+    {{{homecss}}}
+
     {{{style}}}
     {{{_sections.css}}}
-    {{{uploadBook}}}
+    {{{uploadBookCss}}}
 </head>
 
 <body>
@@ -22,7 +25,7 @@
     <nav class="navbar navbar-expand-lg header">
         <div class="header--logo">
             {{!-- <img src="/img/logo.png" alt="logo" class="logo"> --}}
-            <a class="navbar-brand brand" href="/"><img src="/img/logo.png" alt="logo" class="logo"> SUNSHINE</a>
+            <a class="navbar-brand brand" href="/"><img src="../image/main/logo.png" alt="logo" class="logo"> SUNSHINE</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="collapse--form">
@@ -41,15 +44,109 @@
                 </a>
                 <a rel="stylesheet" href="/signup" class="btn-header signup">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                    Sign Up
+                    Sign Up 
                 </a>
             </div>
         </div>
     </nav>
     {{/if}}
-    <div class="container-fluid content">
-        {{{body}}}
+    
+        <div class="container-fluid content">
+            {{{body}}}
+        </div>
+    {{#if hasFooter}}
+    <footer class="footer">
+  <div class="footer__addr">
+    <h1 class="footer__logo">Sunshine</h1>
+        
+    <h2>Contact</h2>
+    
+    <address>
+      5534 Somewhere In. The World 22193-10212<br>
+          
+      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+    </address>
+  </div>
+  
+  <ul class="footer__nav">
+    <li class="nav__item">
+      <h2 class="nav__title">Media</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Online</a>
+        </li>
+
+        <li>
+          <a href="#">Print</a>
+        </li>
+            
+        <li>
+          <a href="#">Alternative Ads</a>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">Technology</h2>
+      
+      <ul class="nav__ul nav__ul--extra">
+        <li>
+          <a href="#">Hardware Design</a>
+        </li>
+        
+        <li>
+          <a href="#">Software Design</a>
+        </li>
+        
+        <li>
+          <a href="#">Digital Signage</a>
+        </li>
+        
+        <li>
+          <a href="#">Automation</a>
+        </li>
+        
+        <li>
+          <a href="#">Artificial Intelligence</a>
+        </li>
+        
+        <li>
+          <a href="#">IoT</a>
+        </li>
+      </ul>
+    </li>
+    
+    <li class="nav__item">
+      <h2 class="nav__title">Legal</h2>
+      
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+        
+        <li>
+          <a href="#">Terms of Use</a>
+        </li>
+        
+        <li>
+          <a href="#">Sitemap</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+  <div class="legal">
+    <p>&copy; 2019 Something. All rights reserved.</p>
+    
+    <div class="legal__links">
+      <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
     </div>
+  </div>
+    </footer>
+    {{/if}}
+    
+    
 
     {{!-- Phần khai báo Javascript --}}
     {{{popper1129Js}}}
@@ -62,6 +159,7 @@
     {{{tinymceJs}}}
     {{{signupJs}}}
     {{{loginJs}}}
+    {{{homejs}}}
     {{{_sections.js}}}
     {{{uploadBookJs}}}
 </body>

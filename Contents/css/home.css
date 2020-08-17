@@ -1,0 +1,37 @@
+.content--slider{
+    height: 40rem;
+    position: relative;
+}
+
+.image-slider{
+    display: none;
+}
+
+.btn--black{
+    background-color: black;
+    color: #fff;
+}
+
+.btn--black:hover{
+    background-color: #fff;
+    color: black;
+}
+
+.btn--left{
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: translate(0%,-50%);
+}
+
+.btn--right{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(0%,-50%);
+}
+
+.image-slider{
+  height: 40rem;
+  width: 100%;
+}

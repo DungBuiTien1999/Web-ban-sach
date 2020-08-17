@@ -13,10 +13,10 @@
   </div>
   <div class="col-sm-7">
     <div class="row content--slider">
-        <img src="/img/book-hor-1.jpg" class="image-slider" alt="slider">
-        <img src="/img/book-hor-2.jpg" class="image-slider" alt="slider">
-        <img src="/img/book-hor-3.jpg" class="image-slider" alt="slider">
-        <img src="/img/book-hor-4.jpg" class="image-slider" alt="slider">
+        <img src="../image/home/book-hor-1.jpg" class="image-slider" alt="slider">
+        <img src="../image/home/book-hor-2.jpg" class="image-slider" alt="slider">
+        <img src="../image/home/book-hor-3.jpg" class="image-slider" alt="slider">
+        <img src="../image/home/book-hor-4.jpg" class="image-slider" alt="slider">
 
         <button class="btn btn--left btn--black" onclick="plusDivs(-1)">&#10094;</button>
         <button class="btn btn--right btn--black" onclick="plusDivs(1)">&#10095;</button>
@@ -37,76 +37,11 @@
 
 {{#section 'css'}}
 <style>
-  .content--slider{
-    height: 40rem;
-    position: relative;
-}
-
-.image-slider{
-    display: none;
-}
-
-.btn--black{
-    background-color: black;
-    color: #fff;
-}
-
-.btn--black:hover{
-    background-color: #fff;
-    color: black;
-}
-
-.btn--left{
-    position: absolute;
-    top: 50%;
-    left: 2%;
-    transform: translate(0%,-50%);
-}
-
-.btn--right{
-    position: absolute;
-    top: 50%;
-    right: 2%;
-    transform: translate(0%,-50%);
-}
-
-.image-slider{
-  height: 40rem;
-  width: 100%;
-}
+ 
 </style>
 {{/section}}
 
 {{#section 'js'}}
   <script>
-  let slideIndex = 1;
-  carousel();
-
-  function plusDivs(n) {
-    showDivs(slideIndex += n);
-  }
-
-  function showDivs(n) {
-    let i;
-    let x = document.getElementsByClassName("image-slider");
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
-    }
-    x[slideIndex-1].style.display = "block";  
-  }
-
-  function carousel() {
-    let i;
-    let x = document.getElementsByClassName("image-slider");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > x.length) {slideIndex = 1}    
-    x[slideIndex-1].style.display = "block";  
-    setTimeout(carousel, 5000); // Change image every 2 seconds
-}
 </script>
 {{/section}}
