@@ -1,4 +1,9 @@
+.content--category{
+    margin-top: 10px;
+}
+
 .content--slider{
+    margin-top: 10px;
     height: 40rem;
     position: relative;
 }
@@ -34,4 +39,17 @@
 .image-slider{
   height: 40rem;
   width: 100%;
+}
+
+.topProducts{
+    display: block;
+}
+
+.mygroupcard{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.myTittle{
+    margin-top: 30px;
 }

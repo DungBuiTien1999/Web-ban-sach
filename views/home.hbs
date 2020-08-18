@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col-sm-3 content--category">
-    <div class="card" style="width: 25rem;">
+    <div class="card shadow" style="width: 25rem;">
       <div class="card-header">
         Category
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">csda</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        {{#each lcCategories}}
+        <a href="/categories/{{ItemID}}/products"
+                class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">
+                {{ItemName}}</a>
+                {{!-- <li class="list-group-item"></li> --}}
+        {{/each}}
       </ul>
     </div>
   </div>
@@ -28,10 +31,61 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row topProducts">
   <div class="myTittle">
     <h3>Top 5 sản phẩm gần đây nhất</h3>
     <hr>
+  </div>
+    <div class="mygroupcard card-deck">
+     {{#each topTimeEnd}}
+     <div class="col-sm-2 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="../image/01/book-hor-11.jpg" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center">
+                                {{format Price}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Chi tiết</a>
+                        </div>
+
+                    </div>
+                </div>
+    {{/each}}
+  </div>
+
+  <div class="myTittle">
+    <h3>Top 5 sản phẩm gần đây nhất</h3>
+    <hr>
+  </div>
+  <div class="mygroupcard card-deck">
+     {{#each topValue}}
+     <div class="col-sm-2 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="../image/01/book-hor-11.jpg" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center">
+                                {{format Price}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Chi tiết</a>
+                        </div>
+
+                    </div>
+                </div>
+    {{/each}}
   </div>
 </div>
 

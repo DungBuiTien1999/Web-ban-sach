@@ -6,15 +6,6 @@ body{
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.7;
-    color: #777;
-    padding: .5rem;
-}
-
 a{
     text-decoration: none !important;
     color: black;
@@ -25,6 +16,12 @@ a:hover{
 }
 
 .header{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #777;
+    padding: .5rem;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
@@ -81,9 +78,7 @@ a:hover{
 }
 
 .content{
-    margin-top: 10px;
-    background-image: linear-gradient(to right bottom, rgba(142, 158, 252, 0.8), rgba(28, 62, 255, 0.8)), url("../img/background.jpg");
-    background-repeat: repeat;
+    background-color: #cffffe;
 }
 
 .logo{

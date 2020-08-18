@@ -1,0 +1,43 @@
+<div class="mytitle">
+    <h2>Sản phẩm {{namelist}}</h2>
+    <hr>
+</div>
+{{#if this.empty}}
+<div class="card-body">
+    <p class="card-text">
+        Chưa có dữ liệu.
+    </p>
+</div>
+{{else}}
+<div class="mygroupcard row">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-9">
+            <div class="row">
+                {{#each this.products}}
+                <div class="col-sm-4 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="../../image/01/book-hor-11.jpg" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center">
+                                {{format Price}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Chi tiết</a>
+                        </div>
+
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</div>
+{{/if}}
