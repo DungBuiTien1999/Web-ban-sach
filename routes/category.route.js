@@ -25,6 +25,9 @@ const PROMISEPOLYFILLJS='<script src="https://cdn.jsdelivr.net/npm/promise-polyf
 const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>';
 const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
 
+//source logo image
+const SrcLogo = '../../image/main/logo.png';
+
 router.get('/:id/products', async (req, res) => {
     
     try {
@@ -42,7 +45,8 @@ router.get('/:id/products', async (req, res) => {
         title:"Book Store",
         empty: rows.length === 0,
         products: rows,
-        namelist: 'handmake'
+        namelist: 'handmake',
+        srcLogo: SrcLogo
     });
 
     } catch (err) {

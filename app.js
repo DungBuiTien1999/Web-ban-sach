@@ -58,6 +58,9 @@ const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6
 const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
 const UPLOADBOOKJS='<script type="text/javascript" src="../js/uploadBook.js"></script>';
 
+//source logo image
+const SrcLogo = '../image/main/logo.png';
+
 const TopTimeEnd = [
   {
     ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Successfully', Price: '100000'
@@ -84,15 +87,6 @@ const TopValue = [
     ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
   }];
 
-const Categories = [
-  {ItemID: '01', ItemName: 'Tiểu thuyết', isActive: false},
-  {ItemID: '02', ItemName: 'Truyện tranh', isActive: false},
-  {ItemID: '03', ItemName: 'Lịch sử', isActive: false},
-  {ItemID: '04', ItemName: 'Văn hóa', isActive: true},
-  {ItemID: '05', ItemName: 'Trinh thám', isActive: false},
-  {ItemID: '06', ItemName: 'Ngụ ngôn', isActive: false}
-]
-
 require('./middlewares/route.mdw')(app);
 require('./middlewares/locals.mdw')(app);
 
@@ -109,7 +103,8 @@ app.get('/', function (req, res) {
      hasFooter: true,
     title:"Book Store",
     topTimeEnd: TopTimeEnd,
-    topValue: TopValue
+    topValue: TopValue,
+    srcLogo: SrcLogo
   });
 });
 
