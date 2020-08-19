@@ -28,8 +28,7 @@ const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey
 router.get('/:id/products', async (req, res) => {
     
     try {
-      const rows = await categoryModel.all();
-      console.log(rows);
+      const rows = await categoryModel.allById(req.params.id);
       res.render('prototype/listprototype.hbs',{
         bootstrap400:BOOTSTRAP400,
         bootstrap431:BOOTSTRAP431,

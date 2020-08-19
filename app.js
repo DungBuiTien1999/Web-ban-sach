@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 //   //     secure: true
 //   // }
 // }))
-// app.use(express.static(path.join(__dirname, '/Contents')));
+app.use(express.static(path.join(__dirname, '/Contents')));
 app.engine('hbs', exphbs({
     defaultLayout: 'main.hbs',
     layoutsDir: 'views/_layouts',
@@ -28,11 +28,7 @@ app.engine('hbs', exphbs({
     }
 }));
 
-
-
-app.use(express.static("Contents"));
-
-require('./middlewares/route.mdw')(app);
+// app.use(express.static("Contents"));
 
 app.set('view engine', 'hbs');
 
@@ -96,6 +92,9 @@ const Categories = [
   {ItemID: '06', ItemName: 'Ngụ ngôn', isActive: false}
 ]
 
+require('./middlewares/route.mdw')(app);
+require('./middlewares/locals.mdw')(app);
+
 app.get('/', function (req, res) {
   res.render('home', {
     bootstrap400:BOOTSTRAP400,
@@ -109,8 +108,7 @@ app.get('/', function (req, res) {
      hasFooter: true,
     title:"Book Store",
     topTimeEnd: TopTimeEnd,
-    topValue: TopValue,
-    lcCategories: Categories
+    topValue: TopValue
   });
 });
 
