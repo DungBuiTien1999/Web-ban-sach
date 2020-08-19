@@ -1,12 +1,12 @@
 <div class="container-center">
     <!--enctype="multipart/form-data" băm cái file ra nhiều phần rồi gửi-->
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="/" method="POST" enctype="multipart/form-data">
         <label>Thể loại</label>
         <br>
-        <select name="selectCategory">
-            {{#each category}}
-            <option value="{{this}}">
-                {{this}}
+        <select name="selectCategory" id="selectCategory">
+            {{#each categories}}
+            <option value="{{this.ItemName}}">
+                {{this.ItemName}}
             </option>
             {{/each}}
         </select>
@@ -17,20 +17,38 @@
         <label>Tác giả</label>
         <input type="text" name="txtAuthor">
         <br><br>
-        <lable>Price</lable>
+        <label>Price</label>
         <input type="text" name="txtBookPrice">
         <br><br>
-        <lable>Description</lable>
+        <label>Description</label>
         <textarea type="text" name="txtDescription" cols="50" rows="10"></textarea>
         <br><br>
-        <label>Image</label>
-        <input type="file" name="txtChooseImage" id="chooseImage" hidden="true">
+        {{!-- <label>Image</label> --}}
+        {{!-- <input type="file" name="txtChooseImage" id="chooseImage" accept="image/*" multiple="true">
         <br>
         <label class="choose-image-lb" for="chooseImage">
             <i class="fa fa-upload fa-1x"></i>
             Choose Image
-        </label>
+        </label> --}}
+        <div class="custom-file-container" data-upload-id="myUniqueUploadId">
+            <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear"
+                    title="Clear Image">&times;</a></label>
+            <label class="custom-file-container__custom-file">
+                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" multiple="true"
+                    aria-label="Choose File">
+                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                <span class="custom-file-container__custom-file__custom-file-control">
+                    Choose File
+                    <span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span>
+                </span>
+            </label>
+            <div class="custom-file-container__image-preview"></div>
+        </div>
         <br><br>
         <input type="submit" value="Upload">
     </form>
 </div>
+<script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+<script>
+    var upload = new FileUploadWithPreview('myUniqueUploadId')
+</script> 
