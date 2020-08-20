@@ -5,8 +5,11 @@ const express_handlebars_sections = require('express-handlebars-sections');
 // const session = require('express-session');
 const path = require('path');
 const numeral = require('numeral');
+const morgan = require('morgan');
 
 const app = express();
+
+app.use(morgan('dev'));
 
 // app.use(session({
 //   secret: 'keyboard cat',
@@ -28,7 +31,7 @@ app.engine('hbs', exphbs({
 
 
 
-app.use(express.static("contents"));
+app.use(express.static("Contents"));
 
 require('./middlewares/route.mdw')(app);
 
