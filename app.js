@@ -1,6 +1,7 @@
-const express = require('express')
+const express = require('express');
 const exphbs  = require('express-handlebars');
 const express_handlebars_sections = require('express-handlebars-sections');
+//const FileUploadWithPreview = require('file-upload-with-preview');
 // const session = require('express-session');
 const path = require('path');
 const numeral = require('numeral');
@@ -138,6 +139,12 @@ app.listen(3000, () => {
     console.log('Web Server is runing at http://localhost:3000');
 });
 
+// initialize a new FileUploadWithPreview object
+//const upload = new FileUploadWithPreview('myUniqueUploadId');
+const UPLOADWITHPREVIEWCSS='<link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">';
+//upload.cachedFileArray;
+//upload.emulateInputSelection() // to open image browser
+//upload.clearPreviewPanel() // clear all selected images
 app.get('/uploadBook',(req,res)=>{
   res.render("uploadBook",{
     category:["truyện tranh", "trinh thám"],
@@ -145,5 +152,8 @@ app.get('/uploadBook',(req,res)=>{
     fontawesome470:FONTAWESOME470,
     fontawesome5121:FONTAWESOME5121,
     uploadBookJs:UPLOADBOOKJS,
+    categories:Categories,
+    uploadCss:UPLOADWITHPREVIEWCSS,
   });
+ 
 });

@@ -69,3 +69,7 @@ button.choose-image-lb:hover{
     background-color: #c01d30;
     outline: none !important;
 }
+
+select{
+    font-weight: bold;
+}
