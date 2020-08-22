@@ -4,7 +4,7 @@
             <h5 class="text">MEMBER LOGIN</h5>
             <div class="input-icons">
                 <i class="fa fa-envelope icon"><label> |</label></i>
-                <input class="type-text input-field" type="text" placeholder="Username" id="username" name="username"
+                <input class="type-text input-field" type="text" placeholder="Email" id="email" name="email"
                     onfocus="changeUnderlineColor('username')" required>
             </div>
 
@@ -13,7 +13,16 @@
                 <input class="type-text input-field" type="password" placeholder="Password" id="password"
                     name="password" onfocus="changeUnderlineColor('password')" required>
             </div>
-
+            {{#if isUnCorrectPassword}}
+            <div class="warning-error mb-20">
+                 <label>Password incorrect</label>
+            </div>
+            {{/if}}
+            {{#if isInvalid}}
+            <div class="warning-error mb-20">
+                 <label>The account is not exist</label>
+            </div>
+            {{/if}}
             <div>
                 <input type="checkbox" name="checkRemember">
                 <label for="checkRemember" class="font-text-checkbox">Remember me |</label>
@@ -62,3 +71,4 @@
         </svg>
     </div>
 </div>
+<script type="text/javascript" src="../js/login.js"></script>

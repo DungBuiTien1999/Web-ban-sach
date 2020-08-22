@@ -76,3 +76,10 @@ i.input-icon{
    font-size:14px;
    display: none;
 }
+
+.warning-error{
+    font-size: 20px;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}

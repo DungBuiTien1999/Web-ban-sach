@@ -201,3 +201,10 @@ i:hover{
 .mySlide{
     display: none;
 }
+
+.warning-error{
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
