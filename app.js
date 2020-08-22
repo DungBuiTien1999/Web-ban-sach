@@ -37,16 +37,8 @@ app.engine('hbs', exphbs({
 // app.use(express.static("Contents"));
 
 app.set('view engine', 'hbs');
-//khai báo các thẻ link css và bootstrap-View nào dùng thì gửi kèm ra cho view đó
-const SIGNUPCSS = '<link rel="stylesheet" href="../css/signup.css">';
-const BOOTSTRAP400 = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />';
-const FONTAWESOME470 = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />';
-const BOOTSTRAP431 = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">';
-const FONTAWESOME5121 = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">';
-const LOGINCSS = ' <link rel="stylesheet" href="../css/login.css">';
-const MAINCSS = '<link rel="stylesheet" href="../css/main.css">';
-const HOMECSS = '<link rel="stylesheet" href="../css/home.css">';
-const UPLOADBOOKCSS = '<link rel="stylesheet" href="../css/uploadBook.css">';
+
+const linkCss=require('./config/linkCss');
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 // const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
@@ -102,12 +94,11 @@ require('./middlewares/route.mdw')(app);
 
 app.get('/', function (req, res) {
   res.render('home', {
-    bootstrap400:BOOTSTRAP400,
-     bootstrap431:BOOTSTRAP431,
-     fontawesome470:FONTAWESOME470,
-     bootstrap431: BOOTSTRAP431,
-     maincss: MAINCSS,
-     homecss: HOMECSS,
+    bootstrap400:linkCss.bootstrap400,
+     bootstrap431:linkCss.bootstrap431,
+     fontawesome470:linkCss.fontawesome470,
+     maincss:linkCss.mainCss,
+     homecss: linkCss.homeCss,
      bootstrapjquery321Js: BOOTSTRAPJQUERY321JS,
      popper1129Js: POPPER1129JS,
      bootstrap400Js: BOOTSTRAP400JS,
@@ -124,9 +115,9 @@ app.get('/', function (req, res) {
 app.get('/signup', (req, res)=>{
   res.render("vwAccount/signup",{
     title:"Signup",
-    signupCss:SIGNUPCSS,
-     fontawesome5121:FONTAWESOME5121,
-      fontawesome470:FONTAWESOME470,
+    signupCss:linkCss.signupCss,
+     fontawesome5121:linkCss.fontawesome5121,
+      fontawesome470:linkCss.fontawesome470,
       hasNavbar:false,
       hasFooter: false
     });
@@ -136,9 +127,9 @@ app.get('/login', (req, res) => {
   res.render("vwAccount/login",
   {
     title:"Login",
-    loginCss:LOGINCSS,
-    fontawesome470:FONTAWESOME470,
-    fontawesome5121:FONTAWESOME5121,
+    loginCss:linkCss.loginCss,
+    fontawesome470:linkCss.fontawesome470,
+    fontawesome5121:linkCss.fontawesome5121,
     hasNavbar:false,
     hasFooter: false
   });
@@ -158,15 +149,15 @@ app.listen(3000, () => {
   console.log('Web Server is runing at http://localhost:3000');
 });
 
-const UPLOADWITHPREVIEWCSS = '<link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">';
+
 
 app.get('/uploadBook', (req, res) => {
   res.render("uploadBook", {
-    uploadBookCss: UPLOADBOOKCSS,
-    fontawesome470: FONTAWESOME470,
-    fontawesome5121: FONTAWESOME5121,
+    uploadBookCss: linkCss.uploadBookCss,
+    fontawesome470: linkCss.fontawesome470,
+    fontawesome5121: linkCss.fontawesome5121,
     //categories: Categories,
-    uploadCss: UPLOADWITHPREVIEWCSS,
+    uploadCss: linkCss.uploadWithPreviewCss,
   });
 });
 const accModels = require('./models/account.models');
@@ -186,9 +177,9 @@ app.post('/login', async (req, res) => {
       res.render('vwAccount/login', {
         isUnCorrectPassword: true,
         title: "Login",
-        loginCss: LOGINCSS,
-        fontawesome470: FONTAWESOME470,
-        fontawesome5121: FONTAWESOME5121,
+        loginCss: linkCss.loginCss,
+        fontawesome470: linkCss.fontawesome470,
+        fontawesome5121: linkCss.fontawesome5121,
         hasNavbar: false,
       })
     }
@@ -196,9 +187,9 @@ app.post('/login', async (req, res) => {
     res.render('vwAccount/login', {
       isInvalid: true,
       title: "Login",
-      loginCss: LOGINCSS,
-      fontawesome470: FONTAWESOME470,
-      fontawesome5121: FONTAWESOME5121,
+      loginCss: linkCss.loginCss,
+      fontawesome470: linkCss.fontawesome470,
+      fontawesome5121: linkCss.fontawesome5121,
       hasNavbar: false,
     })
   }
@@ -217,9 +208,9 @@ app.post('/signup', async (req, res) => {
     res.render("vwAccount/signup", {
       isInvalidEmail: true,
       title: "Signup",
-      signupCss: SIGNUPCSS,
-      fontawesome5121: FONTAWESOME5121,
-      fontawesome470: FONTAWESOME470,
+      signupCss: linkCss.signupCss,
+      fontawesome5121: linkCss.fontawesome5121,
+      fontawesome470: linkCss.fontawesome470,
       hasNavbar: false,
     })
   } else {
