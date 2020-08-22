@@ -35,3 +35,5 @@ function showSlide(n){
  function clickBackBtn(){
      window.location.replace("");
  }
+
+ 
