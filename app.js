@@ -58,6 +58,16 @@ const UPLOADBOOKCSS = '<link rel="stylesheet" href="../css/uploadBook.css">';
 // const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>';
 // const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
 
+const HOMEJS = ' <script type="text/javascript" src="../js/home.js"></script>';
+const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
+const BOOTSTRAP400JS=' <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
+const POPPER1147JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>';
+const BOOTSTRAP431JS=' <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>';
+const SWEETALERT2JS=' <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+const PROMISEPOLYFILLJS='<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>';
+const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>';
+const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
+const BOOTSTRAPJQUERY321JS = '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>';
 //source logo image
 const SrcLogo = '../image/main/logo.png';
 
@@ -117,7 +127,6 @@ app.get('/signup', (req, res)=>{
     signupCss:SIGNUPCSS,
      fontawesome5121:FONTAWESOME5121,
       fontawesome470:FONTAWESOME470,
-      signupJs:SIGNUPJS,
       hasNavbar:false,
       hasFooter: false
     });
@@ -130,15 +139,14 @@ app.get('/login', (req, res) => {
     loginCss:LOGINCSS,
     fontawesome470:FONTAWESOME470,
     fontawesome5121:FONTAWESOME5121,
-    loginJs:LOGINJS,
     hasNavbar:false,
     hasFooter: false
   });
 });
 
-app.use((req, res, next) => {
-  res.send('you\'re lost');
-})
+// app.use((req, res, next) => {
+//   res.send('you\'re lost');
+// })
 
 //default error handler
 app.use((err, req, res, next) => {
@@ -157,7 +165,7 @@ app.get('/uploadBook', (req, res) => {
     uploadBookCss: UPLOADBOOKCSS,
     fontawesome470: FONTAWESOME470,
     fontawesome5121: FONTAWESOME5121,
-    categories: Categories,
+    //categories: Categories,
     uploadCss: UPLOADWITHPREVIEWCSS,
   });
 });
