@@ -1,6 +1,5 @@
 const express = require('express');
-const categoryModel = require('../models/category.models');
-const config = require('../config/default.json');
+const productModel = require("../models/product.models");
 const router = express.Router();
 
 //khai báo các thẻ link css và bootstrap-View nào dùng thì gửi kèm ra cho view đó
@@ -12,12 +11,15 @@ const FONTAWESOME5121='<link rel="stylesheet" href="https://cdnjs.cloudflare.com
 const LOGINCSS=' <link rel="stylesheet" href="../css/login.css">';
 const MAINCSS = '<link rel="stylesheet" href="../../css/main.css">';
 const LISTPROTOTYPECSS = '<link rel="stylesheet" href="../../css/listprototype.css">';
-const HOMECSS ='<link rel="stylesheet" href="../css/home.css">';
+const DETAILPRODUCTCSS = '<link rel="stylesheet" href="../../css/detailproduct.css">';
+const HOMECSS ='<link rel="stylesheet" href="../../css/home.css">';
 
 //Khai báo các liên kết js-View nào dùng thì gửi kèm ra cho view đó
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
 const LOGINJS=' <script type="text/javascript" src="../js/login.js"></script>';
 const HOMEJS = ' <script type="text/javascript" src="../js/home.js"></script>';
+const DETAILPRODUCTJS = ' <script type="text/javascript" src="../../js/detailproduct.js"></script>';
+const BOOTSTRAPJQUERY321JS = '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>';
 const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
 const BOOTSTRAP400JS=' <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
 const POPPER1147JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>';
@@ -31,57 +33,65 @@ const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey
 const SrcLogo = '../../image/main/logo.png';
 
 router.get('/:id', async (req, res) => {
+
+  const TopTimeEnd = [
+    {
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Successfully', Price: '100000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Failure', Price: '200000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Fall in love', Price: '500000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
+    }];
+  
+  const TopValue = [
+    {
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Successfully', Price: '100000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Failure', Price: '200000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Fall in love', Price: '500000'
+    },{
+      ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
+    }];
     
-      // for(const c of res.locals.lcCategories){
-      //   if(c.madanhmuc == req.params.id){
-      //     c.isActive = true;
-      //   }
-      // }
-
-    const catId = req.params.id;
-    const limit = config.paginate.limit;
-
-    const page = req.query.page || 1;
-    if (page < 1) page = 1;
-    const offset = (page - 1) * config.paginate.limit;
-
-    const [total, rows] = await Promise.all([
-      categoryModel.countByCat(catId),
-      categoryModel.pageByCat(catId, offset)
-    ]);
-
-    // const total = await productModel.countByCat(catId);
-    let nPages = Math.floor(total / limit);
-    if (total % limit > 0) nPages++;
-    const page_numbers = [];
-    for (i = 1; i <= nPages; i++) {
-      page_numbers.push({
-        value: i,
-        isCurrentPage: i === +page
-      })
-    }
-
-    const prev_value = page == 1 ? 1 : +page - 1;
-    const next_value = page == nPages ? nPages : +page + 1;
-      res.render('prototype/listprototype.hbs',{
+    // try {
+      const Pro = await productModel.proById(req.params.id);
+      const detailPro = await productModel.detailProById(req.params.id);
+      const imgPro = await productModel.imgProById(req.params.id);
+      res.render('prototype/detailproduct.hbs',{
         bootstrap400:BOOTSTRAP400,
         bootstrap431:BOOTSTRAP431,
         fontawesome470:FONTAWESOME470,
         bootstrap431: BOOTSTRAP431,
         maincss: MAINCSS,
-        listprototypecss: LISTPROTOTYPECSS,
         homecss: HOMECSS,
-        homejs: HOMEJS,
+        detailproductcss: DETAILPRODUCTCSS,
+        bootstrapjquery321Js: BOOTSTRAPJQUERY321JS,
+        popper1129Js: POPPER1129JS,
+        bootstrap400Js: BOOTSTRAP400JS,
+        detailproductJs: DETAILPRODUCTJS,
         hasNavbar: true,
         hasFooter: true,
         title:"Book Store",
-        empty: rows.length === 0,
-        products: rows,
-        namelist: 'handmake',
+        product: Pro[0],
+        detailpro: detailPro[0],
+        imgpro: imgPro,
         srcLogo: SrcLogo,
-        page_numbers, prev_value, next_value,
+        topTimeEnd: TopTimeEnd,
+        topValue: TopValue
     });
 
+    // } catch (err) {
+    //   console.log(err);
+    //   res.end('View error log in console.');
+    // }
+    
 })
 
 module.exports = router;

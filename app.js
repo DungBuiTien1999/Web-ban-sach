@@ -6,6 +6,7 @@ const express_handlebars_sections = require('express-handlebars-sections');
 const path = require('path');
 const numeral = require('numeral');
 const morgan = require('morgan');
+require('express-async-errors');
 
 const app = express();
 
@@ -48,6 +49,7 @@ const UPLOADBOOKCSS='<link rel="stylesheet" href="../css/uploadBook.css">';
 const SIGNUPJS='<script type="text/javascript" src="../js/signup.js"></script>';
 const LOGINJS=' <script type="text/javascript" src="../js/login.js"></script>';
 const HOMEJS = ' <script type="text/javascript" src="../js/home.js"></script>';
+const BOOTSTRAPJQUERY321JS = '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>';
 const POPPER1129JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
 const BOOTSTRAP400JS=' <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
 const POPPER1147JS='<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>';
@@ -87,8 +89,8 @@ const TopValue = [
     ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
   }];
 
-require('./middlewares/route.mdw')(app);
 require('./middlewares/locals.mdw')(app);
+require('./middlewares/route.mdw')(app);
 
 app.get('/', function (req, res) {
   res.render('home', {
@@ -98,6 +100,9 @@ app.get('/', function (req, res) {
      bootstrap431: BOOTSTRAP431,
      maincss: MAINCSS,
      homecss: HOMECSS,
+     bootstrapjquery321Js: BOOTSTRAPJQUERY321JS,
+     popper1129Js: POPPER1129JS,
+     bootstrap400Js: BOOTSTRAP400JS,
      homejs: HOMEJS,
      hasNavbar: true,
      hasFooter: true,
@@ -116,6 +121,7 @@ app.get('/signup', (req, res)=>{
       fontawesome470:FONTAWESOME470,
       signupJs:SIGNUPJS,
       hasNavbar:false,
+      hasFooter: false
     });
 });
 
@@ -128,8 +134,19 @@ app.get('/login', (req, res)=>{
     fontawesome5121:FONTAWESOME5121,
     loginJs:LOGINJS,
     hasNavbar:false,
+    hasFooter: false
   });
 });
+
+app.use((req, res, next) => {
+  res.send('you\'re lost');
+})
+
+//default error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.send("view error on sonsole.");
+})
 
 app.listen(3000, () => {
     console.log('Web Server is runing at http://localhost:3000');
