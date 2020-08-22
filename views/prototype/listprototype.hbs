@@ -18,26 +18,58 @@
                 <div class="col-sm-4 mb-3">
                     <div class="card h-100" onclick="detailItem()">
                         <div class="card-body">
-                            <img src="../../image/01/book-hor-11.jpg" class="card-img-top" alt="...">
+                            <img src="../../image/sp/{{masp}}/main.jpg" class="card-img-top image__product--main"
+                                alt="...">
                             <h5 class="card-title mb-4">{{tensp}}</h5>
                             <p class="card-text text-center">
                                 {{format giatien}} đ</p>
                             <p class="card-text"></p>
                             <p class="card-text">
-                                <h5 class="text-info" id='{{masp}}'>
-                                </h5>
+                            <h5 class="text-info" id='{{masp}}'>
+                            </h5>
                             </p>
                         </div>
                         <div class="card-footer text-muted text-center">
-                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{masp}}">Chi tiết</a>
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/products/{{masp}}">Chi tiết</a>
                         </div>
 
                     </div>
                 </div>
                 {{/each}}
             </div>
-            <div class="col-sm-1"></div>
+            <div class="row mt-4">
+                <div class="col-sm-12">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{prev_value}}">
+                                    <i class="fa fa-backward" aria-hidden="true"></i> Previous
+                                </a>
+                            </li>
+
+                            {{#each this.page_numbers}}
+
+                            {{#if isCurrentPage}}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="javascript:;">{{value}}<span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            {{else}}
+                            <li class="page-item"><a class="page-link" href="?page={{value}}">{{value}}</a></li>
+                            {{/if}}
+
+                            {{/each}}
+
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{next_value}}">
+                                    <i class="fa fa-forward" aria-hidden="true"></i> Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
+        <div class="col-sm-1"></div>
     </div>
 </div>
 {{/if}}

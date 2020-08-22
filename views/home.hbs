@@ -6,9 +6,9 @@
       </div>
       <ul class="list-group list-group-flush">
         {{#each lcCategories}}
-        <a href="/categories/{{ItemID}}/products"
+        <a href="/categories/{{madanhmuc}}"
                 class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">
-                {{ItemName}}</a>
+                {{tendanhmuc}}</a>
                 {{!-- <li class="list-group-item"></li> --}}
         {{/each}}
       </ul>
@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="row topProducts">
+<div class="row container-fluid topProducts">
   <div class="myTittle">
     <h3>Top 5 sản phẩm gần đây nhất</h3>
     <hr>

@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //   //     secure: true
 //   // }
 // }))
-// app.use(express.static(path.join(__dirname, '/Contents')));
+app.use(express.static(path.join(__dirname, '/Contents')));
 app.engine('hbs', exphbs({
   defaultLayout: 'main.hbs',
   layoutsDir: 'views/_layouts',
@@ -34,11 +34,7 @@ app.engine('hbs', exphbs({
   }
 }));
 
-
-
-app.use(express.static("Contents"));
-
-require('./middlewares/route.mdw')(app);
+// app.use(express.static("Contents"));
 
 app.set('view engine', 'hbs');
 //khai báo các thẻ link css và bootstrap-View nào dùng thì gửi kèm ra cho view đó
@@ -61,6 +57,9 @@ const UPLOADBOOKCSS = '<link rel="stylesheet" href="../css/uploadBook.css">';
 // const PROMISEPOLYFILLJS='<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>';
 // const NUMERALJS=' <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>';
 // const TINYMCEJS=' <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>';
+
+//source logo image
+const SrcLogo = '../image/main/logo.png';
 
 const TopTimeEnd = [
   {
@@ -88,52 +87,64 @@ const TopValue = [
     ProID: '01', imgURL: 'book-hor-4.jpg', ProName: 'Hello world', Price: '300000'
   }];
 
-const Categories = [
-  { ItemID: '01', ItemName: 'Tiểu thuyết', isActive: false },
-  { ItemID: '02', ItemName: 'Truyện tranh', isActive: false },
-  { ItemID: '03', ItemName: 'Lịch sử', isActive: false },
-  { ItemID: '04', ItemName: 'Văn hóa', isActive: true },
-  { ItemID: '05', ItemName: 'Trinh thám', isActive: false },
-  { ItemID: '06', ItemName: 'Ngụ ngôn', isActive: false }
-]
+require('./middlewares/locals.mdw')(app);
+require('./middlewares/route.mdw')(app);
 
 app.get('/', function (req, res) {
   res.render('home', {
-    bootstrap400: BOOTSTRAP400,
-    bootstrap431: BOOTSTRAP431,
-    fontawesome470: FONTAWESOME470,
-    bootstrap431: BOOTSTRAP431,
-    maincss: MAINCSS,
-    homecss: HOMECSS,
-    hasNavbar: true,
-    hasFooter: true,
-    title: "Book Store",
+    bootstrap400:BOOTSTRAP400,
+     bootstrap431:BOOTSTRAP431,
+     fontawesome470:FONTAWESOME470,
+     bootstrap431: BOOTSTRAP431,
+     maincss: MAINCSS,
+     homecss: HOMECSS,
+     bootstrapjquery321Js: BOOTSTRAPJQUERY321JS,
+     popper1129Js: POPPER1129JS,
+     bootstrap400Js: BOOTSTRAP400JS,
+     homejs: HOMEJS,
+     hasNavbar: true,
+     hasFooter: true,
+    title:"Book Store",
     topTimeEnd: TopTimeEnd,
     topValue: TopValue,
-    lcCategories: Categories
+    srcLogo: SrcLogo
   });
 });
 
-app.get('/signup', (req, res) => {
-  res.render("vwAccount/signup", {
-    title: "Signup",
-    signupCss: SIGNUPCSS,
-    fontawesome5121: FONTAWESOME5121,
-    fontawesome470: FONTAWESOME470,
-    hasNavbar: false,
-  });
+app.get('/signup', (req, res)=>{
+  res.render("vwAccount/signup",{
+    title:"Signup",
+    signupCss:SIGNUPCSS,
+     fontawesome5121:FONTAWESOME5121,
+      fontawesome470:FONTAWESOME470,
+      signupJs:SIGNUPJS,
+      hasNavbar:false,
+      hasFooter: false
+    });
 });
 
 app.get('/login', (req, res) => {
   res.render("vwAccount/login",
-    {
-      title: "Login",
-      loginCss: LOGINCSS,
-      fontawesome470: FONTAWESOME470,
-      fontawesome5121: FONTAWESOME5121,
-      hasNavbar: false,
-    });
+  {
+    title:"Login",
+    loginCss:LOGINCSS,
+    fontawesome470:FONTAWESOME470,
+    fontawesome5121:FONTAWESOME5121,
+    loginJs:LOGINJS,
+    hasNavbar:false,
+    hasFooter: false
+  });
 });
+
+app.use((req, res, next) => {
+  res.send('you\'re lost');
+})
+
+//default error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.send("view error on sonsole.");
+})
 
 app.listen(3000, () => {
   console.log('Web Server is runing at http://localhost:3000');
