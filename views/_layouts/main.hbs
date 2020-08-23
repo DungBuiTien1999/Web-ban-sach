@@ -2,174 +2,193 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    
-    <title>{{title}}</title>
-    {{!-- Phần khai báo css --}}
-    {{{signupCss}}}
-    {{{fontawesome5121}}}
-    {{{fontawesome470}}}
-    {{{bootstrap400}}}
-    {{{bootstrap431}}}
-    {{{loginCss}}}
-    {{{maincss}}}
-    {{{homecss}}}
-    {{{listprototypecss}}}
-    {{{detailproductcss}}}
+  <meta charset="UTF-8">
 
-    {{{style}}}
-    {{{_sections.css}}}
-    {{{uploadBookCss}}}
-    {{{uploadCss}}}
+  <title>{{title}}</title>
+  {{#if hasNavbar}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  {{/if}}
+  {{!-- Phần khai báo css --}}
+  {{{signupCss}}}
+  {{{fontawesome5121}}}
+  {{{fontawesome470}}}
+  {{{bootstrap400}}}
+  {{{bootstrap431}}}
+  {{{loginCss}}}
+  {{{maincss}}}
+  {{{homecss}}}
+  {{{listprototypecss}}}
+  {{{detailproductcss}}}
+
+  {{{style}}}
+  {{{_sections.css}}}
+  {{{uploadBookCss}}}
+  {{{uploadCss}}}
 </head>
 
 <body>
-    {{#if hasNavbar}}
-    <nav class="navbar navbar-expand-lg header">
-        <div class="header--logo">
-            {{!-- <img src="/img/logo.png" alt="logo" class="logo"> --}}
-            <a class="navbar-brand brand" href="/"><img src="{{srcLogo}}" alt="logo" class="logo"> SUNSHINE</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="collapse--form">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="mr-sm-2 input__search" type="search" placeholder="Search" aria-label="Search">
-                    {{!-- <button class="btn btn-outline-success my-2 my-sm-0 button__search" type="submit">Search</button> --}}
-                    <button class="btn btn__search" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="collapse--cart">
-                <a rel="stylesheet" href="#" class="btn-header cart">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
-                <a rel="stylesheet" href="/login" class="btn-header login">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    Login
-                </a>
-                <a rel="stylesheet" href="/signup" class="btn-header signup">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    Sign Up 
-                </a>
-            </div>
-        </div>
-    </nav>
-    {{/if}}
-    
-        <div class="container-fluid content">
-            {{{body}}}
-        </div>
-    {{#if hasFooter}}
-    <footer class="footer">
-  <div class="footer__addr">
-    <h1 class="footer__logo">Sunshine</h1>
-        
-    <h2>Contact</h2>
-    
-    <address>
-      5534 Somewhere In. The World 22193-10212<br>
-          
-      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
-    </address>
-  </div>
-  
-  <ul class="footer__nav">
-    <li class="nav__item">
-      <h2 class="nav__title">Media</h2>
+  {{#if hasNavbar}}
+  <nav class="navbar navbar-expand-lg header">
+    <div class="header--logo">
+      {{!-- <img src="/img/logo.png" alt="logo" class="logo"> --}}
+      <a class="navbar-brand brand" href="/"><img src="{{srcLogo}}" alt="logo" class="logo"> SUNSHINE</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse--form">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="mr-sm-2 input__search" type="search" placeholder="Search" aria-label="Search">
+          {{!-- <button class="btn btn-outline-success my-2 my-sm-0 button__search" type="submit">Search</button> --}}
+          <button class="btn btn__search" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="collapse--cart" style="margin-right:20px">
+        <a rel="stylesheet" href="#" class="btn-header cart">
+          <i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
 
-      <ul class="nav__ul">
-        <li>
-          <a href="#">Online</a>
-        </li>
-
-        <li>
-          <a href="#">Print</a>
-        </li>
-            
-        <li>
-          <a href="#">Alternative Ads</a>
-        </li>
-      </ul>
-    </li>
-    
-    <li class="nav__item nav__item--extra">
-      <h2 class="nav__title">Technology</h2>
-      
-      <ul class="nav__ul nav__ul--extra">
-        <li>
-          <a href="#">Hardware Design</a>
-        </li>
-        
-        <li>
-          <a href="#">Software Design</a>
-        </li>
-        
-        <li>
-          <a href="#">Digital Signage</a>
-        </li>
-        
-        <li>
-          <a href="#">Automation</a>
-        </li>
-        
-        <li>
-          <a href="#">Artificial Intelligence</a>
-        </li>
-        
-        <li>
-          <a href="#">IoT</a>
-        </li>
-      </ul>
-    </li>
-    
-    <li class="nav__item">
-      <h2 class="nav__title">Legal</h2>
-      
-      <ul class="nav__ul">
-        <li>
-          <a href="#">Privacy Policy</a>
-        </li>
-        
-        <li>
-          <a href="#">Terms of Use</a>
-        </li>
-        
-        <li>
-          <a href="#">Sitemap</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  
-  <div class="legal">
-    <p>&copy; 2019 Something. All rights reserved.</p>
-    
-    <div class="legal__links">
-      <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
+        {{#if didLogin}}
+        <div class="dropdown btn-header">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          {{{username}}}
+          <div class="dropdown-content">
+            <a href="#">Profile</a>
+            <a href="/admin/add-book">Add book</a>
+            <a href="#">Log out</a>
+          </div>
+        </div>
+        {{else}}
+        <a rel="stylesheet" href="/login" class="btn-header login">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          {{{username}}}
+        </a>
+        <a rel="stylesheet" href="/signup" class="btn-header signup">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          Sign Up
+        </a>
+        {{/if}}
+      </div>
     </div>
   </nav>
   {{/if}}
 
+  <div class="container-fluid content">
+    {{{body}}}
+  </div>
+  {{#if hasFooter}}
+  <footer class="footer">
+    <div class="footer__addr">
+      <h1 class="footer__logo">Sunshine</h1>
+
+      <h2>Contact</h2>
+
+      <address>
+        5534 Somewhere In. The World 22193-10212<br>
+
+        <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+      </address>
+    </div>
+
+    <ul class="footer__nav">
+      <li class="nav__item">
+        <h2 class="nav__title">Media</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Online</a>
+          </li>
+
+          <li>
+            <a href="#">Print</a>
+          </li>
+
+          <li>
+            <a href="#">Alternative Ads</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item nav__item--extra">
+        <h2 class="nav__title">Technology</h2>
+
+        <ul class="nav__ul nav__ul--extra">
+          <li>
+            <a href="#">Hardware Design</a>
+          </li>
+
+          <li>
+            <a href="#">Software Design</a>
+          </li>
+
+          <li>
+            <a href="#">Digital Signage</a>
+          </li>
+
+          <li>
+            <a href="#">Automation</a>
+          </li>
+
+          <li>
+            <a href="#">Artificial Intelligence</a>
+          </li>
+
+          <li>
+            <a href="#">IoT</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav__item">
+        <h2 class="nav__title">Legal</h2>
+
+        <ul class="nav__ul">
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="#">Sitemap</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="legal">
+      <p>&copy; 2019 Something. All rights reserved.</p>
+
+      <div class="legal__links">
+        <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
+      </div>
+      </nav>
+      {{/if}}
 
 
-  {{!-- Phần khai báo Javascript --}}
-  {{{popper1129Js}}}
-  {{{bootstrap400Js}}}
-  {{{popper1147Js}}}
-  {{{bootstrap431Js}}}
-  {{{sweetalert2Js}}}
-  {{{promisePolyfillJs}}}
-  {{{numeralJs}}}
-  {{{tinymceJs}}}
-  {{{homejs}}}
-  {{{_sections.js}}}
-  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+      {{!-- Phần khai báo Javascript --}}
+      {{{popper1129Js}}}
+      {{{bootstrap400Js}}}
+      {{{popper1147Js}}}
+      {{{bootstrap431Js}}}
+      {{{sweetalert2Js}}}
+      {{{promisePolyfillJs}}}
+      {{{numeralJs}}}
+      {{{tinymceJs}}}
+      {{{homejs}}}
+      {{{_sections.js}}}
+      {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script> --}}
-  <script
-    src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>
+      <script
+        src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>
 </body>
 
 </html>
