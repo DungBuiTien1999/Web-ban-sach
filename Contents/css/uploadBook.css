@@ -73,3 +73,8 @@ button.choose-image-lb:hover{
 select{
     font-weight: bold;
 }
+
+form>label{
+    font-size: 15px;
+    font-weight: bold;
+}

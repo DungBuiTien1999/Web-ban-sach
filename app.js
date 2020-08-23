@@ -94,6 +94,7 @@ require('./middlewares/route.mdw')(app);
 
 var username = "Login";
 var didLogin = false;
+var isAdmin=false;
 app.get('/', function (req, res) {
   res.render('home', {
     homecss: linkCss.homeCss,
@@ -109,6 +110,7 @@ app.get('/', function (req, res) {
     srcLogo: SrcLogo,
     username: username,
     didLogin: didLogin,
+    isAdmin,
   });
 });
 
@@ -179,9 +181,13 @@ app.post('/login', async (req, res) => {
     if (bcrypt.compareSync(password, acc[0].matkhau)) {
       username = acc[0].username;
       didLogin = true;
+      if(acc[0].maloaiuser==="11") isAdmin=true;
+      
+      //
       res.redirect('/', 200,{
         didLogin,
         username,
+        isAdmin,
       });
     } else {
       res.render('vwAccount/login', {
@@ -232,6 +238,7 @@ app.post('/signup', async (req, res) => {
   }
 
 })
+
 
 app.use((req, res, next) => {
   res.send('you\'re lost');

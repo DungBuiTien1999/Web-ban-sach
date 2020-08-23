@@ -54,8 +54,10 @@
           {{{username}}}
           <div class="dropdown-content">
             <a href="#">Profile</a>
+            {{#if isAdmin}}
             <a href="/admin/add-book">Add book</a>
-            <a href="#">Log out</a>
+            {{/if}}
+            <a href="/logout">Log out</a>
           </div>
         </div>
         {{else}}
