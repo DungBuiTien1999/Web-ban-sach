@@ -5,8 +5,8 @@
         <br>
         <select name="selectCategory" id="selectCategory">
             {{#each categories}}
-            <option value="{{this.ItemName}}">
-                {{this.ItemName}}
+            <option value="{{this.tendanhmuc}}">
+                {{this.tendanhmuc}}
             </option>
             {{/each}}
         </select>
@@ -44,7 +44,6 @@
             </label>
             <div class="custom-file-container__image-preview"></div>
         </div>
-        <br><br>
         <input type="submit" value="Upload">
     </form>
 </div>
