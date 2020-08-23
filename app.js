@@ -94,7 +94,7 @@ require('./middlewares/route.mdw')(app);
 
 var username = "Login";
 var didLogin = false;
-var isAdmin=false;
+var isAdmin = false;
 app.get('/', function (req, res) {
   res.render('home', {
     homecss: linkCss.homeCss,
@@ -157,14 +157,15 @@ app.get('/admin/add-book', (req, res) => {
       fontawesome5121: linkCss.fontawesome5121,
       //categories: Categories,
       hasNavbar: true,
-      hasFooter:true,
+      hasFooter: true,
       uploadCss: linkCss.uploadWithPreviewCss,
       srcLogo: SrcLogo,
       didLogin,
       username,
+      isAdmin,
     });
   }
-  else{
+  else {
     res.send("Đăng nhập với tài khoản admin để thực hiện chức năng thêm sách");
   }
 
@@ -181,14 +182,10 @@ app.post('/login', async (req, res) => {
     if (bcrypt.compareSync(password, acc[0].matkhau)) {
       username = acc[0].username;
       didLogin = true;
-      if(acc[0].maloaiuser==="11") isAdmin=true;
-      
+      if (acc[0].maloaiuser === "11") isAdmin = true;
+
       //
-      res.redirect('/', 200,{
-        didLogin,
-        username,
-        isAdmin,
-      });
+      res.redirect('/');
     } else {
       res.render('vwAccount/login', {
         isUnCorrectPassword: true,
@@ -239,6 +236,15 @@ app.post('/signup', async (req, res) => {
 
 })
 
+app.get('/logout', (req, res) => {
+  if (didLogin) {
+    didLogin = false;
+    username = "Log in";
+    isAdmin = false;
+
+    res.redirect('/');
+  }
+})
 
 app.use((req, res, next) => {
   res.send('you\'re lost');
