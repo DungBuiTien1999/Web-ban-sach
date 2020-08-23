@@ -135,22 +135,6 @@ app.get('/login', (req, res) => {
   });
 });
 
-// app.use((req, res, next) => {
-//   res.send('you\'re lost');
-// })
-
-//default error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.send("view error on sonsole.");
-})
-
-app.listen(3000, () => {
-  console.log('Web Server is runing at http://localhost:3000');
-});
-
-
-
 app.get('/uploadBook', (req, res) => {
   res.render("uploadBook", {
     uploadBookCss: linkCss.uploadBookCss,
@@ -222,3 +206,17 @@ app.post('/signup', async (req, res) => {
   }
   
 })
+
+app.use((req, res, next) => {
+  res.send('you\'re lost');
+})
+
+//default error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.send("view error on sonsole.");
+})
+
+app.listen(3000, () => {
+  console.log('Web Server is runing at http://localhost:3000');
+});
