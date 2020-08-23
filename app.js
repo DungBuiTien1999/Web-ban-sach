@@ -149,13 +149,14 @@ app.listen(3000, () => {
 });
 
 
-
-app.get('/admin/add-book', (req, res) => {
-  if (didLogin) {
+const categoryModel=require('./models/category.models');
+app.get('/admin/add-book', async(req, res) => {
+  if (didLogin && isAdmin) {
+    let categories=await categoryModel.all();
     res.render("uploadBook", {
       uploadBookCss: linkCss.uploadBookCss,
       fontawesome5121: linkCss.fontawesome5121,
-      //categories: Categories,
+      categories: categories,
       hasNavbar: true,
       hasFooter: true,
       uploadCss: linkCss.uploadWithPreviewCss,
