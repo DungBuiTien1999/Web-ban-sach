@@ -18,7 +18,7 @@
   {{{bootstrap400}}}
   {{{bootstrap431}}}
   {{{loginCss}}}
-  {{{maincss}}}
+  {{!-- {{{maincss}}} --}}
   {{{homecss}}}
   {{{listprototypecss}}}
   {{{detailproductcss}}}
@@ -48,24 +48,24 @@
         <a rel="stylesheet" href="#" class="btn-header cart">
           <i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
 
-        {{#if didLogin}}
+        {{#if isAuthenticated}}
         <div class="dropdown btn-header">
           <i class="fa fa-user" aria-hidden="true"></i>
-          {{{username}}}
+          Hi, {{authUser.username}}
           <div class="dropdown-content">
             <a href="#">Profile</a>
             {{#if isAdmin}}
             <a href="/admin/add-book">Add book</a>
             {{/if}}
-            <a href="/logout">Log out</a>
+            <a href="/account/logout">Log out</a>
           </div>
         </div>
         {{else}}
-        <a rel="stylesheet" href="/login" class="btn-header login">
+        <a rel="stylesheet" href="/account/login" class="btn-header login">
           <i class="fa fa-user" aria-hidden="true"></i>
-          {{{username}}}
+          Login
         </a>
-        <a rel="stylesheet" href="/signup" class="btn-header signup">
+        <a rel="stylesheet" href="/account/signup" class="btn-header signup">
           <i class="fa fa-pencil" aria-hidden="true"></i>
           Sign Up
         </a>
