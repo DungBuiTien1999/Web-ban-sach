@@ -2,6 +2,7 @@ const express = require('express');
 const accModels = require('../models/account.models');
 const linkCss = require('../config/linkCss');
 const categoryModel=require('../models/category.models');
+const cartModel = require('../models/cart.models');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -43,7 +44,7 @@ router.post('/login', async (req, res) => {
       req.session.authUser = acc;
       req.session.isAuthenticated = true;
       if (acc.maloaiuser === "11") req.session.isAdmin = true;
-      console.log(req.session.isAuthenticated);
+
       const url = req.query.retUrl || '/';
       res.redirect(url);
     } else {
@@ -90,6 +91,16 @@ router.post('/signup', async (req, res) => {
     //Email chưa được dùng trước đó
     let hash = bcrypt.hashSync(password, saltRounds);
     let saveAcc = await accModels.saveInfoAccount(username, email, hash);
+    
+    //khoi tao gio hang cho khach hang
+    const previousId = await cartModel.countCart();
+    const cartId = +previousId + 1;
+    const entity = {};
+    entity.magiohang = cartId;
+    entity.makh = email;
+    const result1 = cartModel.add(entity);
+
+    console.log(result1);
     res.redirect('/account/login');
     console.log(saveAcc);
   }
