@@ -74,6 +74,7 @@ router.post('/signup', async (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
 
+  console.log(req.body);
   //Kiểm tra email đã được dùng để đk tài khoản chưa
   let acc = await accModels.getSingleAccount(email);
   if (acc != null) {

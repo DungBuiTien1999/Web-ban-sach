@@ -15,6 +15,8 @@ require('express-async-errors');
 const app = express();
 
 app.use(morgan('dev'));
+
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
@@ -113,6 +115,16 @@ app.get('/', function (req, res) {
     srcLogo: SrcLogo,
   });
 });
+
+app.get('/cart', (req, res) => {
+  res.render('cart', {
+    isEmptyCart: true,
+    cartCss: linkCss.cartCss,
+    hasNavbar: true,
+    hasFooter: true,
+    srcLogo: SrcLogo,
+  });
+})
 
 // app.get('/signup', (req, res) => {
 //   res.render("vwAccount/signup", {

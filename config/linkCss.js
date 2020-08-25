@@ -8,6 +8,7 @@ const MAINCSS = '<link rel="stylesheet" href="../css/main.css">';
 const HOMECSS = '<link rel="stylesheet" href="../css/home.css">';
 const UPLOADBOOKCSS = '<link rel="stylesheet" href="../css/uploadBook.css">';
 const UPLOADWITHPREVIEWCSS = '<link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">';
+const CARTCSS = '<link rel="stylesheet" href="../css/cart.css">';
 module.exports = {
     signupCss: SIGNUPCSS,
     bootstrap400: BOOTSTRAP400,
@@ -19,4 +20,5 @@ module.exports = {
     homeCss: HOMECSS, 
     uploadBookCss: UPLOADBOOKCSS,
     uploadWithPreviewCss: UPLOADWITHPREVIEWCSS,
+    cartCss: CARTCSS,
 }
