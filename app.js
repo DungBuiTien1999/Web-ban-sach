@@ -111,9 +111,6 @@ app.get('/', function (req, res) {
     topTimeEnd: TopTimeEnd,
     topValue: TopValue,
     srcLogo: SrcLogo,
-    // username: username,
-    // didLogin: didLogin,
-    // isAdmin,
   });
 });
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const productModel = require("../models/product.models");
+const cartModel = require('../models/cart.models');
 const router = express.Router();
 
 //khai báo các thẻ link css và bootstrap-View nào dùng thì gửi kèm ra cho view đó
@@ -92,6 +93,39 @@ router.get('/:id', async (req, res) => {
     //   res.end('View error log in console.');
     // }
     
+})
+
+
+
+router.post('/addcart/:id', async (req, res) => {
+  let numberitem = req.body.numberitem;
+  let masp = req.params.id;
+  if(req.session.authUser === null){
+    console.log('false');
+    const url = req.query.retUrl || '/';
+      res.redirect(url);
+  }else{
+    const email = req.session.authUser.email;
+    const cart = await cartModel.cartByEmail(email);
+
+    const entity = {};
+    entity.magiohang = cart[0].magiohang;
+    entity.masp = masp;
+
+    const rows = await cartModel.detailCartById(cart[0].magiohang, masp);
+    if(rows.length === 0){
+      entity.soluong = numberitem;
+      const result = await cartModel.addCartDetail(entity);
+    }else{
+      const number = +rows[0].soluong + (+numberitem);
+      entity.soluong = number;
+      const result = await cartModel.updateCartById(entity);
+    }
+    
+    res.redirect(`/products/${masp}`);
+    // const url = req.query.retUrl || '/';
+    //   res.redirect(url);
+  }
 })
 
 module.exports = router;
