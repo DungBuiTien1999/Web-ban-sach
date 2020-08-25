@@ -119,6 +119,16 @@ app.get('/', function (req, res) {
   });
 });
 
+app.get('/cart', (req, res) => {
+  res.render('cart', {
+    isEmptyCart: true,
+    cartCss: linkCss.cartCss,
+    hasNavbar: true,
+    hasFooter: true,
+    srcLogo: SrcLogo,
+  });
+})
+
 // app.get('/signup', (req, res) => {
 //   res.render("vwAccount/signup", {
 //     title: "Signup",
