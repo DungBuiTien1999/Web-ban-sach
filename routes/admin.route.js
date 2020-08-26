@@ -142,7 +142,8 @@ router.post('/add-book', (req, res) => {
         console.log(filenames[i]);
       }
     }
-    res.send("Upload thành công");
+    // res.send("Upload thành công");
+    res.redirect('/admin/add-book');
   });
 })
 
