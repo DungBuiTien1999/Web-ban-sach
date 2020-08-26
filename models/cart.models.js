@@ -10,6 +10,7 @@ module.exports={
       addCartDetail: entity => db.add('chitietgiohang', entity),
       cartByEmail: email => db.load(`select * from giohang where makh = '${email}'`),
       detailCartById: (cartId, ProId) => db.load(`select * from chitietgiohang where magiohang = "${cartId}" and masp = "${ProId}"`),
+      detailCart:(cartId)=>db.load(`select * from chitietgiohang where magiohang = "${cartId}"`),
       updateCartById: entity => {
         // const condition = {magiohang: entity.magiohang, masp: entity.masp};
         // delete entity.magiohang;

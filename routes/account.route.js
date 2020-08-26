@@ -45,6 +45,13 @@ router.post('/login', async (req, res) => {
       req.session.isAuthenticated = true;
       if (acc.maloaiuser === "11") req.session.isAdmin = true;
 
+      //Kiểm tra trạng thái giỏ hàng
+      const email = req.session.authUser.email;
+      var gioHang = await cartModel.cartByEmail(email);
+      var maGioHang = gioHang[0].magiohang;
+      chiTietGioHang = await cartModel.detailCart(maGioHang);//Trả về một mảng gồm: mã sp và số lượng
+      if(chiTietGioHang.length>0) req.session.isEmptyCart=false;
+
       const url = req.query.retUrl || '/';
       res.redirect(url);
     } else {
@@ -112,6 +119,7 @@ router.get('/logout', (req, res) => {
     req.session.isAuthenticated = false;
     req.session.authUser = null;
     req.session.isAdmin = false;
+    req.session.isEmptyCart=true;
 
     res.redirect(req.headers.referer);
   }

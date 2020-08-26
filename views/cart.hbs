@@ -8,25 +8,30 @@
                 <div class="child-container-cart">
                     <h5 class="cart-title">Giỏ hàng</h5>
                     {{#if isEmptyCart}}
-                        <div class="emtyCart text-center">
-                            <img src="../image/cart/emptyCart.PNG">
-                        </div>
-                        <button class="btn-yellow" (click)="goBack()">Tiếp tục chọn</button>
-                    {{/if}}
-                    {{!-- <div id="cart">
-                        <div class="items-cart" *ngFor="let item of countItemsInCart;index as bookId;" id={{bookId}}>
-                            <span class="book-name">{{item.name}}</span>
+                    <div class="emptyCart text-center">
+                        <img src="../image/cart/emptyCart.PNG">
+                    </div>
+                    <button class="btn-yellow" onclick="goBack();">Tiếp tục chọn</button>
+                    {{else}}
+                    <div id="cart">
+                        {{#each cartInfoArr}}
+                        <div class="items-cart"  id={{this.masp}}>
+                            <span class="book-name">{{this.tensp}}</span>
                             <div>
-                                <span>{{item.price | currency : "VND"}}</span>
-                                <span (click)="deleteClick(bookId)"><i class="far fa-trash-alt trash-icon"> Xóa</i></span>
+                                <span>{{this.giatien}} đ</span>
+                                <span>Số lượng: {{this.soluong}}</span>
+                                <span onclick="deleteClick(bookId)"><i class="far fa-trash-alt trash-icon"> Xóa</i></span>
                             </div>
                         </div>
-                    </div> --}}
+                        {{/each}}
+                    </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    document.getElementById("content").style.backgroundColor="white" ;
+    document.getElementById("content").style.backgroundColor = "white";
 </script>
+<script type="text/javascript" src="../js/cart.js"></script>

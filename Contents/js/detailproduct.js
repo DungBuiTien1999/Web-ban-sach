@@ -13,3 +13,7 @@ addQty = () => {
     num++;
     document.getElementById("qty__input").value = num;
 }
+
+function btnAddToCart(){
+    window.alert("Đã thêm sản phẩm vào giỏ");
+}

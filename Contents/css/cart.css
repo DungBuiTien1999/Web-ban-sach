@@ -51,7 +51,7 @@ i.trash-icon:hover{
     border: 1px solid transparent;
 }
 
-.emtyCart{
+.emptyCart{
     display:flex;
     justify-content: center;
     padding: 10px;

@@ -1,3 +1,4 @@
+
 const categoryModel = require('../models/category.models');
 
 module.exports = app => {
@@ -11,7 +12,9 @@ module.exports = app => {
         res.locals.isAuthenticated = req.session.isAuthenticated;
         res.locals.authUser = req.session.authUser;
         res.locals.isAdmin = req.session.isAdmin;
-
+        res.locals.isEmptyCart=req.session.isEmptyCart;
+        if(req.session.isAuthenticated===false)
+          req.session.isEmptyCart=true;
         next();
       })
 }

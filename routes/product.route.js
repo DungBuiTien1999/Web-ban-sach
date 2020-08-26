@@ -105,6 +105,7 @@ router.post('/addcart/:id', async (req, res) => {
     const url = req.query.retUrl || '/';
       res.redirect(url);
   }else{
+    req.session.isEmptyCart=false;
     const email = req.session.authUser.email;
     const cart = await cartModel.cartByEmail(email);
 

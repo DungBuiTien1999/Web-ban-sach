@@ -52,6 +52,7 @@ const SrcLogo = '../../image/main/logo.png';
 const uploadBookCss = '<link rel="stylesheet" href="../../css/uploadBook.css">';
 
 router.get('/add-book', async (req, res) => {
+  console.log(req.session);
   if (req.session.isAuthenticated && req.session.isAdmin) {
     let categories = await categoryModel.all();
     res.render("uploadBook", {
@@ -142,7 +143,7 @@ router.post('/add-book', (req, res) => {
         console.log(filenames[i]);
       }
     }
-    res.send("Upload thành công");
+    res.redirect('/admin/add-book');
   });
 })
 

@@ -5,7 +5,7 @@
             <img src="../../image/sp/{{this.product.masp}}/main.jpg" class="image__product--main rounded border-info" alt="main">
             <div class="product--sub border-info">
                 {{#each this.imgpro}}
-                <img src="../../image/sp/{{masp}}/{{path}}.jpg" alt="sub" class="image__product--sub rounded">
+                <img src="../../image/sp/{{masp}}/{{path}}" alt="sub" class="image__product--sub rounded">
                 {{/each}}
             </div>
         </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             {{!-- <a name="" id="addToCard" class="btn btn__addToCart mt-3" href="#" role="button" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</a> --}}
-            <button id="addToCard" class="btn btn__addToCart mt-3" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+            <button id="addToCard" class="btn btn__addToCart mt-3" onclick="btnAddToCart()" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
             </form>
             
             <div class="description mt-3">
