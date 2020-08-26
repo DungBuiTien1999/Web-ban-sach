@@ -3,7 +3,7 @@
 {{/if}}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-5">
+        <div class="col-sm">
             <div class="container-cart">
                 <div class="child-container-cart">
                     <h5 class="cart-title">Giỏ hàng</h5>
@@ -15,13 +15,35 @@
                     {{else}}
                     <div id="cart">
                         {{#each cartInfoArr}}
-                        <div class="items-cart"  id={{this.masp}}>
-                            <span class="book-name">{{this.tensp}}</span>
-                            <div>
-                                <span>{{this.giatien}} đ</span>
-                                <span>Số lượng: {{this.soluong}}</span>
-                                <span onclick="deleteClick(bookId)"><i class="far fa-trash-alt trash-icon"> Xóa</i></span>
-                            </div>
+                        <div class="items-cart" id={{this.masp}}>
+                            <img src="../image/sp/{{this.masp}}/main.jpg">
+                            <span class="book-name">
+                                <label class="title">
+                                    Tên sách
+                                </label>
+                                <br>
+                                <label>
+                                    {{this.tensp}}
+                                </label>
+                            </span>
+                            <span>
+                                <label class="title">
+                                    Giá tiền
+                                </label>
+                                <br>
+                                <label>
+                                    {{this.giatien}} đ
+                                </label>
+                            </span>
+                            <span>
+                                <label class="title">Số lượng </label>
+                                <br>
+                                <label>{{this.soluong}}</label>
+                            </span>
+                            <span onclick="deleteClick(bookId)" style="margin-right: 50px;">
+                                    <i class="fa fa-trash-o trash-icon" aria-hidden="true">
+                                        Xóa</i>
+                            </span>
                         </div>
                         {{/each}}
                     </div>

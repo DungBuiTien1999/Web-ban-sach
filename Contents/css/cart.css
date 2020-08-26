@@ -16,7 +16,8 @@
 .items-cart{
     display:flex;
     justify-content: space-between;
-    background-color:  burlywood;
+    align-items: center;
+    background-color:  rgb(238, 206, 165);
     margin-bottom: 5px;
 }
 
@@ -26,7 +27,9 @@ span{
 }
 
 .trash-icon{
-    color: blue;
+    color: red;
+    padding:10px;
+    background-color: white;
 }
 
 i.trash-icon:hover{
@@ -74,4 +77,18 @@ button.btn-yellow:hover{
 
 button.btn-yellow:focus{
     outline: none;
+}
+
+.items-cart>img{
+    width: 100px;
+    height: 150px;
+    margin: 5px;
+}
+
+.items-cart>span{
+    font-size: 15px;
+}
+
+.title{
+    font-weight: bold;
 }
