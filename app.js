@@ -99,19 +99,6 @@ app.get('/', function (req, res) {
   });
 });
 
-<<<<<<< HEAD
-=======
-app.get('/cart', (req, res) => {
-  res.render('cart', {
-    isEmptyCart: true,
-    cartCss: linkCss.cartCss,
-    hasNavbar: true,
-    hasFooter: true,
-    srcLogo: SrcLogo,
-  });
-})
-
->>>>>>> c160ccbec1c75f8a377ce8912dcd253bcf5edfeb
 app.use((req, res, next) => {
   res.send('you\'re lost');
 })
